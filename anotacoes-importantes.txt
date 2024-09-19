@@ -1,0 +1,36 @@
+
+CRIAR UM BANCO DE DADOS EM MYSQL COM NOME SGD E COLAR ESTES SCRIPTS
+
+
+
+
+CREATE TABLE Usuarios (
+	id	 INT	 AUTO_INCREMENT PRIMARY KEY,
+	nome	 VARCHAR(100)	 NOT NULL,
+	email	 VARCHAR(100)	 NOT NULL,
+	senha   	VARCHAR(50)	 NOT NULL,
+	departamento	  varchar(100)    	NOT NULL
+);
+
+
+
+CREATE TABLE Exercicio_dissertativo(
+	id	 int	 AUTO_INCREMENT PRIMARY KEY,
+	tipo_exercicio	 VARCHAR(50) NOT NULL,
+	descricao  LONGTEXT NOT NULL,
+	resposta LONGTEXT NOT NULL
+);
+
+CREATE TABLE Exercicio_objetivo(
+	id int AUTO_INCREMENT PRIMARY KEY,
+	tipo_exercicio 	varchar(50) not null,
+	descricao LONGTEXT NOT NULL,
+	resposta varchar(2),
+	numero_questao int,		
+
+	FOREIGN KEY(numero_questao)
+	REFERENCES
+	Exercicio_dissertativo(id)
+		ON DELETE Cascade
+		ON UPDATE Cascade
+);
